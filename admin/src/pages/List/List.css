@@ -1,0 +1,65 @@
+/* Ensure the body and root elements take the full width */
+body, html, #root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main container style */
+.list-add-flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Table container style */
+.list-table {
+    width: 100%;
+    max-width: 1200px; /* Set a max-width to limit the width on larger screens */
+    margin: 20px auto; /* Center the table horizontally */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add some shadow for better visibility */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+/* Table row style */
+.list-table-format {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #cacaca; /* Use border-bottom for row separation */
+    font-size: 14px; /* Slightly increase font size for better readability */
+}
+
+/* Title row style */
+.list-table-format.title {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    border-bottom: 2px solid #cacaca; /* Thicker border for title row */
+}
+
+/* Image style */
+.list-table-format img {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 3px; /* Rounded corners for images */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .list-table-format {
+        grid-template-columns: 1fr 2fr 1fr; /* Adjust columns for smaller screens */
+        gap: 10px;
+    }
+
+    .list-table-format.title {
+        display: none; /* Hide title row on smaller screens */
+    }
+}
