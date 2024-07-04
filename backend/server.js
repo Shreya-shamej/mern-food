@@ -6,16 +6,18 @@ import userRouter from "./routes/userRoute.js"
 import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
-
+import path from 'path';
 
 //app config
 const app = express()
 const port = 4000
 
+const __dirname = path.resolve();
 
 //middleware 
 app.use(express.json())
 app.use(cors())
+
 
 //db connection
 connectDB();
@@ -27,6 +29,10 @@ app.use("/api/user",userRouter);
 app.use("/api/cart",cartRouter);
 app.use("/api/order",orderRouter);
 
+app.use(express.static(path.join(__dirname,'/frontend/dist')));
+app.get('*', (req, res) =>{
+    res.sendFile(path.join(__dirname,'frontend','dist', 'server.html'));
+})
 
 app.get("/",(req,res)=>{
     res.send("API Working")
